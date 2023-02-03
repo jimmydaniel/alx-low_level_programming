@@ -1,16 +1,17 @@
 #include "hash_tables.h"
-
 /**
- * key_index - function that generates a distributed index
- * according to a given hash
+ * key_index -Returns the normalized key index
  *
- * @key: key passed
- * @size: size of the hash tables
- * Return: key index
+ * @key: The key to get/set in the hash table
+ * @size: The size of the hash table
+ * @unsigned long int
+ * Return: Normalized index
  */
+
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-	if (key == NULL || size == 0)
-		return (0);
-	return (hash_djb2(key) % size);
+	unsigned long int index = 0;
+
+	index = hash_djb2((unsigned char *)key);
+	return (index % size);
 }
